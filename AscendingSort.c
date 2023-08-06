@@ -58,4 +58,4 @@ void main()
         printf("\nPercentage: %f",s[i].perc);
         
     } //end of for
-}//end of main
+}?//end of main
