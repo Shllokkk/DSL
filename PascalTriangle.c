@@ -44,5 +44,5 @@ printf("Pascal's Triangle (up to row %d):\n", n);  // Display triangle with prop
 void main() 
 {  
     int n = 10; // Number of rows to generate  
-displayPascalsTriangle(n); // Call the function to display Pascal's Triangle  
+    displayPascalsTriangle(n); // Call the function to display Pascal's Triangle  
 }  
