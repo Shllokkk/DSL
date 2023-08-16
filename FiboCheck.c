@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-fibocheck(int);
+void fibocheck(int);
 
 void main()
 {
@@ -14,7 +14,7 @@ void main()
     fibocheck(num);
 } //end of main
 
-fibocheck(int num1) 
+void fibocheck(int num1) 
 {
     int a=(5*num1*num1-4); 
     int b=(5*num1*num1+4);
