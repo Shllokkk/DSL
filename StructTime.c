@@ -8,10 +8,10 @@ struct time
 };
 
 // function prototypes
-struct time input();
-void display1(struct time);
+struct time input();                          // returns structure object
+void display1(struct time);                   // passing structure object as argument
 void display2(struct time);
-struct time increment(struct time);
+struct time increment(struct time);           // passing as well as returing an structure object
 
 void main()
 {
