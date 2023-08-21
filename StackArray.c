@@ -9,7 +9,7 @@ int x;
 
 
 // function prototypes
-void isfull();
+void isFull();
 void push();
 void pop();
 void peek();
@@ -32,7 +32,7 @@ void main()
         switch(choice)
         {
             case 1: 
-            isfull();
+            isFull();
             break;
 
             case 2:
@@ -67,7 +67,7 @@ void main()
     
 }
 
-void isfull()
+void isFull()
 {
     if (top==N-1)
     {
@@ -100,6 +100,7 @@ void pop()
     }
     else
     {
+        printf("\nThe popped element is: %d", ptr[top]);
         top--;
     }
 }
