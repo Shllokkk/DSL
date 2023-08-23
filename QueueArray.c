@@ -26,7 +26,7 @@ void main()
     while(1)
     {
         printf("\n\n---Array Implementation Of Queue---");
-        printf("\n1. Check Whether Queue is full\n2. Insert element into the Queue\n3. Delete element from the Queue\n4. Peek into rear of the Queue\n5. Peek into the front of the Queue\n6. Display elements of the Queue\n7. EXIT");
+        printf("\n1. Check whether Queue is full\n2. Insert element into the Queue\n3. Delete element from the Queue\n4. Peek into rear of the Queue\n5. Peek into the front of the Queue\n6. Display elements of the Queue\n7. EXIT");
         printf("\n\nSelect option: ");
         scanf("%d", &choice);
 
@@ -73,10 +73,11 @@ void main()
 
 void isFull()
 {
-    if(fr==-1||fr==N-1)
-    {
+    if(fr==-1||fr==re)
         printf("\nThe Queue is empty.");
-    }
+
+    else if(fr>re)
+        printf("/nThe Queue is empty(All elements deleted but cannot add more elements.)");
     else if(re==N-1)
         printf("\nThe Queue is full.");
     
@@ -91,12 +92,16 @@ void enQueue()
     {
         printf("\nQueue is full!");
     }
+    else if(fr==-1)
+    {
+            fr++;
+            re++;
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d",&x);
+            ptr[re]=x;
+    }
     else
     {
-        if(fr==-1)
-        {
-            fr++;
-        }
         re++;
         printf("\nEnter the element to be inserted: ");
         scanf("%d",&x);
@@ -106,7 +111,7 @@ void enQueue()
 
 void deQueue()
 {
-    if(fr==-1||fr==N-1)
+    if(fr==-1||fr>re)
     {
         printf("\nQueue is empty!");
     }
@@ -133,7 +138,7 @@ void rear()
 
 void display()
 {
-    if(re==-1)
+    if(fr==-1)
     {
         printf("\nQueue is empty!");
     }
