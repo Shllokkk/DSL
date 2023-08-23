@@ -25,7 +25,7 @@ void main()
     while(1)
     {
         printf("\n\n---Array Implementation Of Stack---");
-        printf("\n1. Check Whether Stack is full\n2. Push element into the Stack\n3. Pop element from the Stack\n4. Peek into the Stack\n5. Display elements of the Stack\n6. EXIT");
+        printf("\n1. Check whether Stack is full\n2. Push element into the Stack\n3. Pop element from the Stack\n4. Peek into the Stack\n5. Display elements of the Stack\n6. EXIT");
         printf("\n\nSelect option: ");
         scanf("%d", &choice);
 
@@ -84,17 +84,17 @@ void push()
         printf("\nStackOverflow! Cannot add more elements");
     }
     else
-    {
+    {   
+        top++;
         printf("\nEnter element to be added: ");
         scanf("%d", &x);
-        top++;
         ptr[top]=x;
     }
 }
 
 void pop()
 {
-    if(top==0)
+    if(top==-1)
     {
         printf("\nStackUnderflow! Stack is empty");
     }
