@@ -120,20 +120,20 @@ void deQueue()
     fr++;
 }
 
-void front()
-{
-    if(fr==-1)
-    printf("\nQueue is empty!");
-    else
-    printf("\nThe element at the front is: %d", ptr[fr]);
-}
-
 void rear()
 {
     if(re==-1)
-    printf("\nQueue is empty!");
+        printf("\nQueue is empty!");
     else
-    printf("\nThe element at the rear is: %d", ptr[re]);
+        printf("\nThe element at the rear is: %d", ptr[re]);
+}
+
+void front()
+{
+    if(fr==-1)
+        printf("\nQueue is empty!");
+    else
+        printf("\nThe element at the front is: %d", ptr[fr]);
 }
 
 void display()

@@ -8,13 +8,13 @@ int* ptr;
 
 // function prototypes
 void isFull();
-void enQueue();
-void deQueue();
-void front();
+void enQueueRear();
+void enQueueFront();
+void deQueueRear();
+void deQueueFront();
 void rear();
+void front();
 void display();
-void count();
-
 
 void main()
 {
@@ -26,7 +26,7 @@ void main()
     while(1)
     {
         printf("\n\n---Array Implementation Of Queue---");
-        printf("\n1. Check whether Queue is full\n2. Insert element into the Queue\n3. Delete element from the Queue\n4. Peek into rear of the Queue\n5. Peek into the front of the Queue\n6. Display elements of the Queue\n7. Check Number of Elements in Queue\n8. EXIT");
+        printf("\n1. Check whether Queue is full\n2. Insert element in the rear of the Queue\n3. Insert element in the front of the Queue\n4. Delete element from the rear of the Queue\n5. Delete element from the front of the queue\n6. Peek into rear of the Queue\n7. Peek into the front of the Queue\n8. Display elements of the Queue\n9. EXIT");
         printf("\n\nSelect option: ");
         scanf("%d", &choice);
 
@@ -37,30 +37,34 @@ void main()
             break;
 
             case 2:
-            enQueue();
+            enQueueRear();
             break;
 
             case 3:
-            deQueue();
+            enQueueFront();
             break;
 
             case 4:
-            rear();
+            deQueueRear();
             break;
 
             case 5:
-            front();
+            deQueueFront();
             break;
 
             case 6:
-            display();
+            rear();
             break;
 
             case 7:
-            count();
+            front();
             break;
 
             case 8:
+            display();
+            break;
+
+            case 9:
             break;
         }
 
@@ -87,26 +91,67 @@ void isFull()
         printf("\nThe Queue is not full.");
 }
 
-void enQueue()
+void enQueueRear()
 {
     if(fr==(re+1)%N)
     {
         printf("\nThe Queue is full.");
     }
     else
-    {   
+    {
         if(fr==-1)
         {
             fr++;
         }
-        re=(re+1)%N;  
-        printf("\nEnter the element to be inserted at place: ");
+        re=(re+1)%N;
+        printf("\nEnter the element to be inserted: ");
         scanf("%d",&ptr[re]);
-           
     }
 }
 
-void deQueue()
+void enQueueFront()
+{
+    if(fr==(re+1)%N)
+    {
+        printf("\nThe Queue is full.");
+    }
+    else
+    {
+        if(fr==0)
+            fr=(N-1);
+        else
+        {
+            fr--;       
+        }
+        printf("\nEnter element to be inserted: ");
+        scanf("%d", &ptr[fr]);
+    }
+}
+
+void deQueueRear()
+{
+    if(re==fr)
+    {
+        printf("\nThe queue is empty.");
+        fr=re=-1;
+    }
+    else
+    {
+        if(re==0)
+        {
+            printf("\nThe deleted element is: %d",ptr[re]);
+            re=(N-1);
+        }
+        else
+        {
+            printf("\nThe deleted element is: %d",ptr[re]);
+            re--;
+        }
+        
+    }
+}
+
+void deQueueFront()
 {
     if(fr==-1)
     {
@@ -174,32 +219,4 @@ void display()
     }
 }
 
-void count()
-{
-    int cntr=0;
-    int fr1;
-    if(fr==-1)
-        printf("\nNo elements in the Queue.");
-    else if(fr<=re)
-    {
-        for(int i=fr;i<=re;i++)
-        {
-            cntr++;
-        }
-         printf("\nNumber of elements: %d",cntr);
-    }
-    else
-    {
-        fr1=fr;
-        for(int i=fr1;i<N;i++)
-        {
-            cntr++;
-        }
-        fr1=0;
-        for(int i=fr1;i<=re;i++)
-        {
-            cntr++;
-        }
-        printf("\nNumber of elements: %d",cntr);
-    }  
-}
+
