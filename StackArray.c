@@ -125,10 +125,10 @@ void display()
     }
     else
     {
-        printf("\nThe elements of the Stack are:  ");
+        printf("\nThe elements of the Stack are: ");
         for(int i=0;i<=top;i++)
         {
-            printf("\n%d",ptr[i]);
+            printf("%d ",ptr[i]);
         }
     }
 }
