@@ -82,7 +82,7 @@ void isFull()
         printf("\nThe Queue is full.");
     
     else
-    printf("\nThe Queue is not full.");
+        printf("\nThe Queue is not full.");
 }
 
 void enQueue()
@@ -116,7 +116,7 @@ void deQueue()
         printf("\nQueue is empty!");
     }
     else 
-    printf("\nThe deleted element is: %d", ptr[fr]);
+        printf("\nThe deleted element is: %d", ptr[fr]);
     fr++;
 }
 
@@ -143,7 +143,7 @@ void display()
         printf("\nQueue is empty!");
     }
     else
-    printf("\nThe elements of Queue are: ");
+        printf("\nThe elements of Queue are: ");
     for(int i=fr;i<=re;i++)
     {
         printf("%d", ptr[i]);

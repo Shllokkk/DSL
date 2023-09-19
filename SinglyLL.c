@@ -19,6 +19,7 @@ void deleteAt();
 void deleteEnd();
 void display();
 void count();
+void search();
 
 void main()
 {
@@ -35,50 +36,55 @@ void main()
         printf("\n6. Delete a specific node of LL");
         printf("\n7. Delete from end of LL");
         printf("\n8. Display all elements of LL");
-        printf("\n9. Count elemens in LL");
+        printf("\n9. Count elements in LL");
+        printf("\n10. Search for an elements in LL");
         printf("\n\nSelect choice: ");
         scanf("%d",&choice);
 
         switch(choice)
         {
-            case(1):
-            state();
-            break;
+            case 1:
+                state();
+                break;
 
-            case(2):
-            insertBeg();
-            break;
+            case 2:
+                insertBeg();
+                break;
 
-            case(3):
-            insertAt();
-            break;
+            case 3:
+                insertAt();
+                break;
 
-            case(4):
-            insertEnd();
-            break;
+            case 4:
+                insertEnd();
+                break;
 
-            case(5):
-            deleteBeg();
-            break;
+            case 5:
+                deleteBeg();
+                break;
 
-            case(6):
-            deleteAt();
-            break;
+            case 6:
+                deleteAt();
+                break;
 
-            case(7):
-            deleteEnd();
-            break;
+            case 7:
+                deleteEnd();
+                break;
 
-            case(8):
-            display();
-            break;
+            case 8:
+                display();
+                break;
 
-            case(9):
-            count();
-            break;
+            case 9:
+                count();
+                break;
+
+            case 10:
+                search();
+                break;
 
             default:
-            break;
+                break;
         }
 
         printf("\nDo you want to exit(1/0): ");
@@ -92,7 +98,6 @@ void main()
     }
 }
 
-
 struct node* createNode()
 {
     return (struct node*) malloc (sizeof(struct node));
@@ -101,10 +106,9 @@ struct node* createNode()
 void state()
 {
     if(head==NULL)
-    printf("\nThe LL is empty.");
-
+        printf("\nThe LL is empty.");
     else
-    printf("\nThe LL is not empty.");
+        printf("\nThe LL is not empty.");
 }
 
 void insertBeg()
@@ -167,68 +171,110 @@ void insertEnd()
 
 void deleteBeg()
 {
-    struct node* ptr=head;
-    printf("\nElement deleted: %d",ptr->data);
-    head=ptr->next;
+    if(head!=NULL)
+    {
+        struct node* ptr=head;
+        printf("\nElement deleted: %d",ptr->data);
+        head=ptr->next;
+    }
+    else
+        printf("\nThe LL is empty.");
 }
 
 void deleteAt()
 {
-    int x;
-    printf("\nEnter element to be deleted: ");
-    scanf("%d",&x);
-
-    struct node* ptr;
-    struct node* Temp;
-
-    while(ptr->data==x)
+    if(head!=NULL)
     {
-        Temp=ptr;
-        ptr=ptr->next;
+        int x;
+        printf("\nEnter element to be deleted: ");
+        scanf("%d",&x);
+
+        struct node* ptr;
+        struct node* Temp;
+
+        while(ptr->data==x)
+        {
+            Temp=ptr;
+            ptr=ptr->next;
+        }
+        Temp->next=ptr->next;
     }
-    Temp->next=ptr->next;
+    else
+        printf("\nThe LL is empty.");
 }
 
 void deleteEnd()
 {
-    struct node* ptr;
-    struct node* temp;
-    while(ptr->next!=NULL)
+    if(head!=NULL)
     {
-        temp=ptr;
-        ptr=ptr->next;
+        struct node* ptr;
+        struct node* temp;
+        while(ptr->next!=NULL)
+        {
+            temp=ptr;
+            ptr=ptr->next;
+        }
+        temp->next=NULL;
     }
-    temp->next=NULL;
+    else   
+        printf("\nThe LL is empty.");
 }
 
 void display()
 {
-    if(head==NULL)
-    printf("\nThe LL is empty");
-
-    struct node* ptr=head;
-    printf("\nThe elements of LL are: ");
-    while(ptr!=NULL)
+    if(head!=NULL)
     {
-        printf("%d ",ptr->data);
-        ptr=ptr->next;
+        struct node* ptr=head;
+        printf("\nThe elements of LL are: ");
+        while(ptr!=NULL)
+        {
+            printf("%d ",ptr->data);
+            ptr=ptr->next;
+        }
     }
+    else
+        printf("\nThe LL is empty.");
 }
 
 void count()
 {
     if(head==NULL)
-    printf("\nThe LL is empty");
-
+    {
+        struct node* ptr=head;
+        int count=0;
+        while(ptr!=NULL)
+        {
+            ptr=ptr->next;
+            count++;
+        }
+        printf("\nNumber of elements in LL: %d",count);
+    }
     else
+        printf("\nThe LL is empty.");
+}
+
+void search()
+{
+    if(head!=NULL)
     {
-    struct node* ptr=head;
-    int count=0;
-    while(ptr!=NULL)
-    {
-        ptr=ptr->next;
-        count++;
+        int test;
+        struct node* ptr=head;
+
+        printf("\nEnter element to be searched: ");
+        scanf("%d",&test);
+
+        while(ptr!=NULL)
+        {
+            if(ptr->data==test)
+            {
+                printf("\nThe entered data is present in the LL");
+                break;
+            }
+            ptr=ptr->next;
+        }
+        if(ptr->data!=test)
+            printf("\nElement not found!");
     }
-    printf("\nNumber of elements in LL: %d",count);
-    }
+    else   
+         printf("\nThe LL is empty.");
 }

@@ -74,7 +74,7 @@ void isFull()
         printf("\nThe Stack is full.");
     }
     else
-    printf("\nThe Stack is not full.");
+        printf("\nThe Stack is not full.");
 }
 
 void push()
