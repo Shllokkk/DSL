@@ -9,13 +9,14 @@ int top=-1;
 int state();
 void push(char);
 char pop();
-void infixPostfix(char*);
+char peek();
 int precedence(char);
+void infixPostfix(char*);
 
 void main()
 {
     char expression[30];
-    stack=(int*) malloc(MAX*sizeof(int));
+    stack=(char*) malloc(MAX*sizeof(char));
     
     printf("Enter Infix expression: ");
     scanf("%s",expression);
@@ -25,9 +26,9 @@ void main()
 int state()
 {
     if(top==-1)
-        return 1;
-    else
         return 0;
+    else
+        return 1;
 }
 void push(char operator)
 {
@@ -40,6 +41,11 @@ char pop()
     char operator=stack[top];
     top--;
     return operator;
+}
+
+char peek()
+{
+    return stack[top];
 }
 
 int precendence(char operator)
@@ -67,10 +73,27 @@ void infixPostfix(char* ptr)
         {
             printf("%c",ptr[i]);
         }
+        else if(ptr[i]=='(')
+            push(ptr[i]);
+
+        else if(ptr[i]=')')
+        {
+            while(peek()!='(')
+                printf("%c",pop());
+            pop();
+        }
+
         else
         {
-            int check;
-            
+            if(state()||precedence(peek())<precedence(ptr[i]))
+                push(ptr[i]);
+            else if(precedence(peek())>=precedence(ptr[i]))
+            {
+                while(state()&&precedence(peek())>=precedence(ptr[i]))
+                    printf("%c",pop());
+                push(ptr[i]);
+            }
         }
+        i++;
     }
 }
