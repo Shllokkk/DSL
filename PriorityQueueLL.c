@@ -89,7 +89,7 @@ void insert()
         printf("\nPriorityQueueOverflow!");
     else
     {
-         printf("\nEnter element to be inserted: ");
+        printf("\nEnter element to be inserted: ");
         scanf("%d",&x);
         printf("\nEnter priority for this element: ");
         scanf("%d",&y);
