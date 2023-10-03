@@ -48,7 +48,7 @@ char peek()
     return stack[top];
 }
 
-int precendence(char operator)
+int precedence(char operator)
 {
     switch(operator)
     {
@@ -69,14 +69,14 @@ void infixPostfix(char* ptr)
 
     while(ptr[i]!='\0')
     {
-        if(ptr[i]>='a'||ptr[i]<='z')
+        if(ptr[i]>='a'&&ptr[i]<='z')
         {
             printf("%c",ptr[i]);
         }
         else if(ptr[i]=='(')
             push(ptr[i]);
 
-        else if(ptr[i]=')')
+        else if(ptr[i]==')')
         {
             while(peek()!='(')
                 printf("%c",pop());
@@ -96,4 +96,6 @@ void infixPostfix(char* ptr)
         }
         i++;
     }
+    while(state())
+     printf("%c",pop());
 }
