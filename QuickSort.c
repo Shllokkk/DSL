@@ -30,3 +30,44 @@ void quickSort(int arr[],int begindex,int endindex)
         quickSort(arr,location+1,endindex);
     }
 }
+
+int partition(int arr[],int begindex,int endindex) 
+{
+    int left,right,location,temp,flag;
+    left=location=begindex;
+    right=endindex;
+    flag=0;
+
+    while(flag!=1)
+    {
+        while(arr[location]<=arr[right] && location!=right)
+            right--;
+
+        if(location==right)
+            flag=1;
+        else if(arr[location]>arr[right])
+        {   
+            temp=arr[location];
+            arr[location]=arr[right];
+            arr[right]=temp;
+            location=right;
+        }
+
+        if(flag!=0)
+        {
+            while(arr[location]>=arr[left] && location!=left)
+                left++;
+
+            if(location==left)
+                flag=1;
+            else if(arr[location]<arr[left])
+            {   
+                temp=arr[location];
+                arr[location]=arr[left];
+                arr[left]=temp;
+                location=left;
+            }
+        }
+    }
+    return location;
+}

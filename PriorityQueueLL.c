@@ -85,7 +85,7 @@ void insert()
     struct node* newnode;
     newnode=createNode();
 
-    if(newnode=NULL)
+    if(newnode==NULL)
         printf("\nPriorityQueueOverflow!");
     else
     {
