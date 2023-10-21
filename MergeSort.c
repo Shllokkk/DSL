@@ -71,6 +71,6 @@ void merge(int arr[],int startindex,int midindex,int endindex,int size)
         }
     }
     
-    for(int k=0;k<size;k++)
+    for(int k=0;k<index;k++)
         arr[k]=temp[k];
 }
