@@ -1,0 +1,26 @@
+struct node *root;
+  root = new_node(20);
+  insert(root, 5);
+  insert(root, 1);
+  insert(root, 15);
+  insert(root, 9);
+  insert(root, 7);
+  insert(root, 12);
+  insert(root, 30);
+  insert(root, 25);
+  insert(root, 40);
+  insert(root, 45);
+  insert(root, 42);
+
+  preOrder(root);
+  printf("\n");
+  postOrder(root);
+  printf("\n");
+
+  root = delete(root, 1);
+  root = delete(root, 40);
+  root = delete(root, 45);
+  root = delete(root, 9);
+
+  inOrder(root);
+  printf("\n");

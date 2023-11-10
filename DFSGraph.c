@@ -1,64 +1,62 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#define MAX 10
 
-#define MAX_VERTICES 100
+int stack[MAX];
 
-struct Graph {
-    int V;
-    int** adjacencyMatrix;
-    bool* visited;
-};
+int top = -1;
 
-struct Graph* createGraph(int V) {
-    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
-    graph->V = V;
+int visited[6] = {0, 0, 0, 0, 0, 0};
+
+void push(int x);
+int pop();
+int isStackEmpty();
+
+void main()
+{
+    int N = 6;
+
+    int graph[6][6] = {{0,1,1,0,0,0},
+                       {1,0,1,0,0,0},
+                       {1,1,0,1,1,0},
+                       {0,0,1,0,0,0},
+                       {0,0,1,0,0,1},
+                       {0,0,0,0,1,0}};
     
-    graph->visited = (bool*)malloc(V * sizeof(bool));
-    for (int i = 0; i < V; i++) {
-        graph->visited[i] = false;
-    }
-    
-    graph->adjacencyMatrix = (int**)malloc(V * sizeof(int*));
-    for (int i = 0; i < V; i++) {
-        graph->adjacencyMatrix[i] = (int*)malloc(V * sizeof(int));
-        for (int j = 0; j < V; j++) {
-            graph->adjacencyMatrix[i][j] = 0;
-        }
-    }
-    return graph;
-}
+    int start = 1;
+    push(start);
+    visited[start - 1] = 1;
 
-void addEdge(struct Graph* graph, int src, int dest) {
-    graph->adjacencyMatrix[src][dest] = 1;
-    graph->adjacencyMatrix[dest][src] = 1; 
-}
+    while (!isStackEmpty())
+    {
+        int current = pop();
+        printf("%d ", current);
 
-void DFS(struct Graph* graph, int vertex) {
-    printf("%d ", vertex);
-    graph->visited[vertex] = true;
-
-    for (int i = 0; i < graph->V; i++) {
-        if (graph->adjacencyMatrix[vertex][i] == 1 && !graph->visited[i]) {
-            DFS(graph, i);
+        for (int i = 0; i < 6; i++)
+        {
+            if (graph[current - 1][i] == 1 && !visited[i])
+            {
+                push(i + 1);
+                visited[i] = 1;
+            }
         }
     }
 }
 
-int main() {
-    int V = 6; 
-    struct Graph* graph = createGraph(V);
+void push(int x)
+{
+    if (top < MAX - 1)
+        stack[++top] = x;
+}
 
-    addEdge(graph, 0, 1);
-    addEdge(graph, 0, 2);
-    addEdge(graph, 1, 3);
-    addEdge(graph, 1, 4);
-    addEdge(graph, 2, 4);
-    addEdge(graph, 3, 4);
-    addEdge(graph, 3, 5);
+int pop()
+{
+    if (top >= 0)
+        return stack[top--];
 
-    printf("Depth First Traversal starting from vertex 0:\n");
-    DFS(graph, 0);
+    return -1; 
+}
 
-    return 0;
+int isStackEmpty()
+{
+    return top == -1;
 }
