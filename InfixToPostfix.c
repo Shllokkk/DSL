@@ -61,6 +61,7 @@ int precedence(char operator)
         case '^':
             return 3;
     }
+    return -1;
 }
 
 void infixPostfix(char* ptr)
@@ -78,7 +79,7 @@ void infixPostfix(char* ptr)
 
         else if(ptr[i]==')')
         {
-            while(peek()!='(')
+            while(state()&&peek()!='(')
                 printf("%c",pop());
             pop();
         }
@@ -97,5 +98,5 @@ void infixPostfix(char* ptr)
         i++;
     }
     while(state())
-     printf("%c",pop());
+        printf("%c",pop());
 }

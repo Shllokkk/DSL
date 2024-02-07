@@ -22,9 +22,8 @@ void main()
                        {0,0,1,0,0,1},
                        {0,0,0,0,1,0}};
     
-    int start = 1;
-    push(start);
-    visited[start - 1] = 1;
+    push(1);
+    visited[0] = 1;
 
     while (!isStackEmpty())
     {

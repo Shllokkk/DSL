@@ -45,5 +45,11 @@ void selectionSort(int arr[],int size)
         arr[start]=arr[smallindex];
         arr[smallindex]=temp;
         start++;
+
+        printf("\nIteration %d: ",start);
+        for(int j=0;j<size;j++) 
+        {
+            printf("%d ",arr[j]);
+        }
     }
 }

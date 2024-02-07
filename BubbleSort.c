@@ -32,5 +32,11 @@ void bubbleSort(int arr[],int size)
                 arr[j+1]=temp;
             }
         }
+        
+        printf("\nIteration %d: ",i+1);
+        for(int j=0;j<size;j++) 
+        {
+            printf("%d ",arr[j]);
+        }
     }
 }

@@ -13,6 +13,7 @@ void main()
     ptr=(char *) malloc(MAX*sizeof(char));
     char eqn[30];
     int i=0;
+    int flag=1;
 
     printf("\nEnter Equation to be checked: ");
     gets(eqn);
@@ -28,13 +29,15 @@ void main()
             int check=pop();
             if(check)
             {
-                printf("\nEquation is unbalanced!");
+                flag=0;
                 break;
             }
         }
         i++;
     }
-    if(top==-1)
+    if(top>=0)
+        flag=0;
+    if(flag)
         printf("\nThe equation is balanced!");
     else
         printf("\nThe equation is unbalanced!");
