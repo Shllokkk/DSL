@@ -25,7 +25,7 @@ int dfs(int initialVertex, int parent)
             else if(i!=parent)
                 return 1;   
         }
-    }
+    } 
     return 0;
 }
 
